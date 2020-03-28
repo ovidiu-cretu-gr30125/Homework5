@@ -2,8 +2,7 @@ package isp.lab5.exercise3;
 
 /**
  * ProxyVideo the constructor
- * public method play() play the right video witch is give in videoType parameter
- * @param type - one of the values("Color", "black and white")
+ * public method play() play the right video witch is given by videoType parameter
  */
 
 public class ProxyVideo implements Playable {
