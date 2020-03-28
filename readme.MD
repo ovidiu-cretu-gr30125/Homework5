@@ -76,7 +76,7 @@ For the application above:
 * add a new class _BlackAndWhiteVideo_ which will display message "Play black and white video {name of the video}".
 * add necessary changes in ProxyVideo class so that depending on a constructor argument given in this class the proxy to call either black and white or color playable video.
 
-**>>>>insert class diagram here<<<<**
+![Exercise 3 image](docs/ClassDiagramExercise3.jpg)
 
 ## Exercise 4
 

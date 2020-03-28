@@ -27,6 +27,7 @@ public class ATM {
         cm.account=account;
         System.out.println(cm.account.getBalance());
     }
+
     public double checkMoneyForWithDraw(Account account){
         CheckMoney cm = new CheckMoney();
         cm.account=account;
