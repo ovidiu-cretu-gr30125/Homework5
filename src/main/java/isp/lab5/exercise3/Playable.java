@@ -1,8 +1,8 @@
 package isp.lab5.exercise3;
 
-/**
- * play the video
- */
 interface Playable {
+    /**
+     * play the video
+     */
     void play();
 }

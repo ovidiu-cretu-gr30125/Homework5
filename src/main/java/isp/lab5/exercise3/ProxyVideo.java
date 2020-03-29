@@ -1,10 +1,5 @@
 package isp.lab5.exercise3;
 
-/**
- * ProxyVideo the constructor
- * public method play() play the right video witch is given by videoType parameter
- */
-
 public class ProxyVideo implements Playable {
     private ColorVideo colorVideo;
 
@@ -14,11 +9,19 @@ public class ProxyVideo implements Playable {
 
     private String videoType;
 
+    /**
+     *  ProxyVideo the constructor
+     * @param fileName name of the video file that has to be played
+     * @param videoType the type of the video -("Color","black and white")
+     */
     public ProxyVideo(String fileName,String videoType){
         this.fileName = fileName;
         this.videoType=videoType;
     }
 
+    /**
+     * play method play the right video given by videoType
+     */
     @Override
     public void play() {
        if(videoType.equals("Color")){

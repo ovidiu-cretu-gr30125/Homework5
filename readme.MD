@@ -176,7 +176,7 @@ For the application above:
 * add new two classes(_Square_ and _RoundedSquare_) which will have their own implementation of draw method.
 * adapt the current implementation in order to be able to create instances of these classes based on their type. Test the new functionality using Main class.
 
-**>>>>insert class diagram here<<<<**
+![Exercise 4 image](docs/ClassDiagramExercise4.jpg)
 
 ## Exercise 5
 ![Exercise 5 image](docs/ex5.jpg)
