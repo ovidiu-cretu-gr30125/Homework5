@@ -1,43 +1,54 @@
 package isp.lab5.exercise1;
 
 public class ATM {
-    private Bank bank = new Bank();
-
-    private Card card = new Card();
+    private Bank bank;
+    private Card card;
 
     public ATM(Bank bank,Card card){
         this.bank=bank;
         this.card=card;
+        bank.addCard(card);
     }
 
     public void changePin(String oldPin,String newPin){
-        ChangePin cp = new ChangePin();
-        cp.oldPin=oldPin;
-        cp.newPin=newPin;
+        if(this.card!=null) {
+            Transaction transaction;
+            transaction = new ChangePin(oldPin, newPin);
+            transaction.account=bank.getAccountByCardId(this.card.getCardId());
+            System.out.println(transaction.execute());
+            System.out.println(bank.executeTransaction(transaction));
+        }
+        else
+            System.out.println("Card is null!");
     }
 
     public void withdraw(double amount ){
-        WithdrawMoney wm = new WithdrawMoney();
-        wm.amount=amount;
-        System.out.println("Take the money!");
+       if(this.card!=null){
+           Transaction transaction = new WithdrawMoney(amount);
+           transaction.account=bank.getAccountByCardId(this.card.getCardId());
+           System.out.println(transaction.execute());
+           System.out.println(bank.executeTransaction(transaction));
+       }
+       else
+           System.out.println("Card is null!");
     }
 
-    public void checkMoney(Account account){
-        CheckMoney cm = new CheckMoney();
-        cm.account=account;
-        System.out.println(cm.account.getBalance());
-    }
-
-    public double checkMoneyForWithDraw(Account account){
-        CheckMoney cm = new CheckMoney();
-        cm.account=account;
-        return cm.account.getBalance();
+    public void checkMoney(){
+       if(this.card!=null){
+           Transaction transaction;
+           transaction = new CheckMoney(bank.getAccountByCardId(this.card.getCardId()));
+           System.out.println(transaction.execute());
+           System.out.println(bank.executeTransaction(transaction));
+       }
+       else
+           System.out.println("Card is null!");
     }
 
 
     public boolean insertCard(Card card, String pin){
-        if(card.getPin()==pin){
+        if(card.getPin().equals(pin)){
             this.card=card;
+            System.out.println("Card inserted successfully!");
             return true;
         }
         return false;

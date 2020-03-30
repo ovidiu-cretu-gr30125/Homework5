@@ -4,23 +4,21 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class BankTest {
-    Card card = new Card("4090 2347 4328 3829","1234");
-
-    Account account = new Account(card,"Ovidiu Cretu",751.5);
-
-    Bank bank = new Bank();
-
-    ATM atm = new ATM(bank,card);
-
-    Transaction transaction = new Transaction() {
-        @Override
-        public String execute() {
-            return null;
-        }
-    };
     @Test
     public void getAccountByCardIdTest(){
-        bank.addAccount(account);
-        assertEquals(account,bank.getAccountByCardId("4090 2347 4328 3829"));
+        Card[] card = new Card[10];
+        for(int i=0;i<10;i++){
+            card[i]= new Card("000"+i,"50"+i);
+        }
+        Account[] account = new Account[10];
+        for(int i=0;i<10;i++){
+            account[i] = new Account(card[i],"Owner"+i,10*i);
+        }
+        Bank bank = new Bank(account);
+
+        ATM atm = new ATM(bank,card[0]);
+
+        assertEquals(atm.insertCard(card[0],"500"),true);
+
     }
 }

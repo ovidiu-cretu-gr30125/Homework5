@@ -1,17 +1,23 @@
 package isp.lab5.exercise1;
 
+
 public class ChangePin extends Transaction{
     public String oldPin;
 
     public String newPin;
 
-    @Override
-    public String execute() {
-        return null;
+    public ChangePin( String oldPin, String newPin){
+        this.oldPin=oldPin;
+        this.newPin=newPin;
     }
 
-    public ChangePin(){
-        this.oldPin=null;
-        this.newPin=null;
+    @Override
+    public String execute() {
+        if(oldPin.equals(account.getCard().getPin())){
+            System.out.println("Pin OK!");
+            account.getCard().setPin(newPin);
+            return "Pin changed!";
+        }
+        return "Wrong pin!";
     }
 }

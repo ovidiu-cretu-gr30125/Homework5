@@ -2,9 +2,7 @@ package isp.lab5.exercise1;
 
 public class Account {
     private Card card;
-
     private String owner;
-
     private double balance;
 
     public Account(Card card,String owner,double balance){
@@ -15,6 +13,10 @@ public class Account {
 
     public double getBalance() {
         return balance;
+    }
+
+    public void setBalance(double newBalance){
+        this.balance=newBalance;
     }
 
     public Card getCard() {
