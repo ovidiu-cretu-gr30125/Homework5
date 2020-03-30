@@ -31,4 +31,9 @@ public class Elk extends Animal implements Herbivorous {
     public int getChancesToRunSuccessfully() {
         return chanceToRuntSuccessfully;
     }
+
+    @Override
+    public String toString() {
+        return "${Elk} ${"+species+"} age ${"+age+"}  with a chance of ${"+chanceToRuntSuccessfully+"}%";
+    }
 }

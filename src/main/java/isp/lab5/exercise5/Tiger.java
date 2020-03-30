@@ -31,4 +31,9 @@ public class Tiger extends  Animal implements Carnivorous{
     public int getChancesToHuntSuccessfully() {
         return chanceToHuntSuccessfully;
     }
+
+    @Override
+    public String toString() {
+        return "${Tiger} ${"+species+"}  at age ${"+age+"} with a chance of ${"+chanceToHuntSuccessfully+"}%";
+    }
 }

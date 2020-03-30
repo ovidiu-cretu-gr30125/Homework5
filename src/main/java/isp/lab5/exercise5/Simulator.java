@@ -1,5 +1,6 @@
 package isp.lab5.exercise5;
 
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -28,38 +29,48 @@ public class Simulator {
             System.out.println("jungle.getCarnivore(i)" + i + "");
             System.out.println(jungle.carnivore[i]);
         }
-        ArrayList<Integer> listOfHerbivore = new ArrayList<Integer>();
-        for (int i = 0; i < 20; i++) {
-            listOfHerbivore.add(i);
-        }
-        Collections.shuffle(listOfHerbivore);
-            ArrayList<Integer> listOfCarnivore = new ArrayList<Integer>();
-            for (int i = 0; i < 20; i++) {
-                listOfCarnivore.add(i);
-            }
-                Collections.shuffle(listOfCarnivore);
         System.out.println("The fight begins");
+        Random random = new Random();
+        int draw=0;
+        int drawHerbivore=0;
+        int drawCarnivore=0;
         while(this.jungle.carnivore.length>0 && this.jungle.herbivore.length>0 ) {
-            for (int i = 0; i < 20; i++) {
-                if (jungle.carnivore[listOfCarnivore.get(i)].getChancesToHuntSuccessfully() > jungle.herbivore[listOfHerbivore.get(i)].getChancesToRunSuccessfully()) {
-                    jungle.carnivore[listOfCarnivore.get(i)].huntSuccessfully();
-                    jungle.herbivore[listOfHerbivore.get(i)].runFailed();
-                    ///System.out.println(jungle.carnivore[listOfHerbivore.get(i)]);
-                    jungle.removeAnimalForHerbivores(listOfHerbivore.get(i));
+           int  listOfCarnivore=random.nextInt(jungle.carnivore.length);
+           int listOfHerbivore=random.nextInt(jungle.herbivore.length);
+                if (jungle.carnivore[listOfCarnivore].getChancesToHuntSuccessfully() > jungle.herbivore[listOfHerbivore].getChancesToRunSuccessfully()) {
+                    jungle.carnivore[listOfCarnivore].huntSuccessfully();
+                    jungle.herbivore[listOfHerbivore].runFailed();
+                    jungle.removeAnimalForHerbivores(listOfHerbivore);
 
                 } else {
-                    if (jungle.carnivore[listOfCarnivore.get(i)].getChancesToHuntSuccessfully() == jungle.herbivore[listOfHerbivore.get(i)].getChancesToRunSuccessfully()) {
+                    if (jungle.carnivore[listOfCarnivore].getChancesToHuntSuccessfully() == jungle.herbivore[listOfHerbivore].getChancesToRunSuccessfully()) {
                         System.out.println("Draw");
+                        draw=1;
+                        jungle.carnivore[listOfCarnivore].huntSuccessfully();
+                        jungle.herbivore[listOfHerbivore].runSuccessfully();
                     } else {
-                        if(jungle.carnivore[listOfCarnivore.get(i)].getChancesToHuntSuccessfully() <jungle.herbivore[listOfHerbivore.get(i)].getChancesToRunSuccessfully())
-                        jungle.herbivore[listOfHerbivore.get(i)].runSuccessfully();
-                        jungle.carnivore[listOfCarnivore.get(i)].huntFailed();
-                        jungle.removeAnimalFromCarnivores(listOfCarnivore.get(i));
+                        if(jungle.carnivore[listOfCarnivore].getChancesToHuntSuccessfully() <jungle.herbivore[listOfHerbivore].getChancesToRunSuccessfully())
+                        jungle.herbivore[listOfHerbivore].runSuccessfully();
+                        jungle.carnivore[listOfCarnivore].huntFailed();
+                        jungle.removeAnimalFromCarnivores(listOfCarnivore);
                     }
 
                 }
-
             }
+        if(jungle.herbivore.length!=0&& draw==0){
+            System.out.println("Herbivores win!");
+            for(int i=0;i<jungle.herbivore.length;i++){
+                System.out.println(jungle.herbivore[i].toString());
+            }
+        }
+        if(jungle.carnivore.length!=0&& draw==0){
+            System.out.println("Carnivores win!");
+            for(int i=0;i<jungle.carnivore.length;i++){
+                System.out.println(jungle.carnivore[i].toString());
+            }
+        }
+        if(draw==1){
+            System.out.println("Draw");
         }
     }
 }

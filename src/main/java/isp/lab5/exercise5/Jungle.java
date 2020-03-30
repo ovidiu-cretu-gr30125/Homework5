@@ -19,7 +19,6 @@ public class Jungle {
     private void generateRandomHerbivorous(Herbivorous[]herbivorous){
         Random x = new Random();
         int numberOfDears=x.nextInt(20);
-        int numberOfElks=20-numberOfDears;
         for (int i=0;i<numberOfDears;i++){
             Dear dear = new Dear("00",10);
             herbivorous[i]=dear;
@@ -39,12 +38,11 @@ public class Jungle {
     private void generateRandomCarnivorous(Carnivorous[]carnivorous){
         Random y = new Random();
         int numberOfTigers=y.nextInt(20);
-        int numberOfLions=20-numberOfTigers;
-        for(int i=0;i<numberOfLions;i++){
+        for(int i=0;i<numberOfTigers;i++){
             Lion lion = new Lion("02",22);
             carnivorous[i]=lion;
         }
-        for(int i=numberOfLions;i<20;i++){
+        for(int i=numberOfTigers;i<20;i++){
             Tiger tiger = new Tiger("04",30);
             carnivorous[i]=tiger;
         }

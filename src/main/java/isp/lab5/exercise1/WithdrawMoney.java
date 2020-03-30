@@ -15,6 +15,11 @@ public class WithdrawMoney extends Transaction{
         return amount;
     }
 
+    /**
+     * execute the withdraw transaction
+     * set the new account balance
+     * @return message that the transaction has been done
+     */
     @Override
     public String execute() {
         if(amount<=account.getBalance()){

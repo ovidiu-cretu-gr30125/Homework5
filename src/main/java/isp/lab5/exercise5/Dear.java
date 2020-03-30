@@ -31,4 +31,9 @@ public class Dear extends Animal implements  Herbivorous{
     public int getChancesToRunSuccessfully() {
         return chanceToRunSuccessfully;
     }
+
+    @Override
+    public String toString() {
+        return "${Dear} ${"+species+"}  age ${"+age+"} with a chance of ${"+chanceToRunSuccessfully+"}%";
+    }
 }
